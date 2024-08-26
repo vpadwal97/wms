@@ -1,0 +1,105 @@
+@import url("./_variable.scss");
+
+:root {
+  &:not(.active) {
+    --sidebar-width: 80px;
+  }
+}
+
+.mainCon.active {
+  --sidebar-width: 250px;
+
+  .menu-item {
+    flex-direction: row;
+  }
+}
+
+.menu-btn {
+
+  &:hover,
+  &.active {
+    --bs-btn-active-bg: var(--p-secondary) !important;
+    --bs-btn-active-border-color: var(--p-secondary) !important;
+    --bs-btn-hover-border-color: var(--p-secondary) !important;
+    --bs-btn-hover-bg: var(--p-secondary) !important;
+  }
+
+  &.active {
+    .collapse-icon {
+      transform: rotate(180deg);
+    }
+  }
+}
+
+
+
+.text-white-psecondry {
+  --text-white-psecondry: #ffff;
+  color: var(--text-white-psecondry);
+
+
+  &.active,
+  &:hover {
+    --text-white-psecondry: var(--p-secondary);
+  }
+}
+
+
+.text-primary-psecondry {
+  --text-primary-psecondry: var(--bs-primary);
+  color: var(--text-primary-psecondry)!important;
+
+
+  &.active,
+  &:hover {
+    --text-primary-psecondry: var(--p-secondary);
+  }
+}
+
+
+.menu-btn,
+.mainBody,
+.sidebar-button.btn,
+.sidebarCon,
+.menu-btn .collapse-icon,
+.m-title {
+  transition: all .35s ease;
+}
+
+.menu-item {
+  flex-direction: column;
+}
+
+.profile-pic {
+  max-width: 100px;
+  max-height: 100px;
+}
+
+.sidebarCon {
+  width: var(--sidebar-width);
+  scrollbar-width: none;
+}
+
+.sidebar-button.btn {
+  left: var(--sidebar-width);
+}
+
+.mainBody {
+  width: calc(100% - var(--sidebar-width));
+  margin-left: var(--sidebar-width);
+}
+
+.form-control:focus {
+  box-shadow: 0 0 10px rgba(13, 110, 253, .25) !important;
+}
+
+//font-size 0 to 40
+@mixin fs-($value) {
+  font-size: $value !important;
+}
+
+@for $i from 0 through 40 {
+  .fs-#{$i} {
+    @include fs-(#{$i}px); // Include mixin with pixel unit
+  }
+}
